@@ -9,6 +9,7 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  z-index: 99;
 `;
 
 export const Logo = styled.h1`

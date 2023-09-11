@@ -52,3 +52,17 @@ export const Button = styled.button`
     color: var(--color-purple);
   }
 `;
+
+export const ContentHomeSide = styled.section`
+  padding-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+export const ContentColum = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+`;
