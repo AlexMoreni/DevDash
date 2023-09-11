@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   ContainerHeader,
   Logo,
@@ -8,11 +10,17 @@ import {
 const NavBar = () => {
   return (
     <ContainerHeader>
-      <Logo>DevDash</Logo>
+      <Link to="/">
+        <Logo>DevDash</Logo>
+      </Link>
       <ContainerLinks>
-        <LinksHeader href="#">Projetos</LinksHeader>
-        <LinksHeader href="#">Anotações</LinksHeader>
-        <LinksHeader href="#">Login</LinksHeader>
+        <Link to="#">
+          <LinksHeader>Projetos</LinksHeader>
+        </Link>
+        <LinksHeader>Anotações</LinksHeader>
+        <Link to="/login">
+          <LinksHeader>Login</LinksHeader>
+        </Link>
       </ContainerLinks>
     </ContainerHeader>
   );
