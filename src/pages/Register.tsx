@@ -10,7 +10,6 @@ import {
   Message,
   MessageInput,
   Input,
-  MessageItLost,
   ImgEye,
   ButtonSubmit,
   MessageCreateOrLog,
@@ -19,32 +18,37 @@ import {
   ImgBackground,
 } from "./LoginAndRegister.style";
 
-const Login = () => {
+const Register = () => {
   return (
     <Container>
       <FormLogin action="/seu-endpoint-de-acao" method="POST">
-        <Title>Acesse a plataforma</Title>
+        <Title>Registre-se na plataforma</Title>
         <Message>
-          Faça login ou registre-se para começar a construir seus projetos ainda
-          hoje.
+          Registre-se para começar a construir seus projetos ainda hoje.
         </Message>
         <MessageInput>
           E-mail
           <Input type="text" placeholder="Digite seu email" />
         </MessageInput>
         <MessageInput>
+          Nome
+          <Input type="text" placeholder="Digite seu nome" />
+        </MessageInput>
+        <MessageInput>
           Senha
           <Input type="password" placeholder="Digite sua senha" />
-          <Link to="/">
-            <MessageItLost>Esqueceu a senha?</MessageItLost>
-          </Link>
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
-        <ButtonSubmit type="submit" value="Entrar" />
+        <MessageInput>
+          Confirme sua senha
+          <Input type="password" placeholder="Confirme sua senha" />
+          <ImgEye src={Eye} alt="Mostrar senha" />
+        </MessageInput>
+        <ButtonSubmit type="submit" value="Cadastrar" />
         <MessageCreateOrLog>
-          Ainda não tem uma conta?{" "}
+          Já tem uma conta?{" "}
           <Link to="/register">
-            <TextEmphasis>Inscreva-se</TextEmphasis>
+            <TextEmphasis>Login</TextEmphasis>
           </Link>
         </MessageCreateOrLog>
       </FormLogin>
@@ -55,4 +59,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
