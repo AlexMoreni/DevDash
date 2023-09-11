@@ -21,27 +21,35 @@ import {
 const Register = () => {
   return (
     <Container>
-      <FormLogin action="/seu-endpoint-de-acao" method="POST">
+      <FormLogin action="/users/register" method="POST">
         <Title>Registre-se na plataforma</Title>
         <Message>
           Registre-se para começar a construir seus projetos ainda hoje.
         </Message>
         <MessageInput>
           E-mail
-          <Input type="text" placeholder="Digite seu email" />
+          <Input type="text" placeholder="Digite seu email" name="email" />
         </MessageInput>
         <MessageInput>
           Nome
-          <Input type="text" placeholder="Digite seu nome" />
+          <Input type="text" placeholder="Digite seu nome" name="name" />
         </MessageInput>
         <MessageInput>
           Senha
-          <Input type="password" placeholder="Digite sua senha" />
+          <Input
+            type="password"
+            placeholder="Digite sua senha"
+            name="password"
+          />
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
         <MessageInput>
           Confirme sua senha
-          <Input type="password" placeholder="Confirme sua senha" />
+          <Input
+            type="password"
+            placeholder="Confirme sua senha"
+            name="password2"
+          />
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
         <ButtonSubmit type="submit" value="Cadastrar" />
