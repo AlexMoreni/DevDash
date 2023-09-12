@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Rectangle from "../../public/rectangle-login.png";
 import Eye from "../../public/eye-off.png";
@@ -19,9 +21,34 @@ import {
 } from "./LoginAndRegister.style";
 
 const Register = () => {
+  const navigate: any = useNavigate();
+  const [message, setMessage] = useState<string>("");
+
+  const registerForm = (e: any) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3000/users/register", {
+        email: "alexmoreni@email.com",
+        name: "Mirella",
+        password: "senha123",
+      })
+      .then(function (response) {
+        setMessage(response.data.message);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (message === "Cadastrado") {
+      navigate("/login");
+    }
+  });
+
   return (
     <Container>
-      <FormLogin action="/users/register" method="POST">
+      <FormLogin onSubmit={registerForm}>
         <Title>Registre-se na plataforma</Title>
         <Message>
           Registre-se para começar a construir seus projetos ainda hoje.

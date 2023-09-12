@@ -10,14 +10,20 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 import "./App.css";
+import { useState } from "react";
 
 function App() {
+  const [logged, setLogged] = useState<boolean>(false);
+
   return (
     <Router>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route
+          path="/login"
+          element={<Login logged={logged} setLogged={setLogged} />}
+        ></Route>
         <Route path="/register" element={<Register />}></Route>
       </Routes>
       <Footer />

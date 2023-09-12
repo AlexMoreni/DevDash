@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import Rectangle from "../../public/rectangle-login.png";
 import Eye from "../../public/eye-off.png";
@@ -19,10 +21,40 @@ import {
   ImgBackground,
 } from "./LoginAndRegister.style";
 
-const Login = () => {
+type Props = {
+  logged: boolean;
+  setLogged: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Login = ({ logged, setLogged }: Props) => {
+  const navigate: any = useNavigate();
+  const [message, setMessage] = useState<string>("");
+
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:3000/users/login", {
+        email: "mirdella@email.com",
+        password: "senha123",
+      })
+      .then((response) => {
+        setMessage(response.data.message);
+        setLogged(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    if (logged) {
+      navigate("/");
+    }
+  });
+
   return (
     <Container>
-      <FormLogin action="/seu-endpoint-de-acao" method="POST">
+      <FormLogin onSubmit={handleLogin}>
         <Title>Acesse a plataforma</Title>
         <Message>
           Faça login ou registre-se para começar a construir seus projetos ainda
@@ -30,11 +62,15 @@ const Login = () => {
         </Message>
         <MessageInput>
           E-mail
-          <Input type="text" placeholder="Digite seu email" />
+          <Input type="text" placeholder="Digite seu email" name="email" />
         </MessageInput>
         <MessageInput>
           Senha
-          <Input type="password" placeholder="Digite sua senha" />
+          <Input
+            type="password"
+            placeholder="Digite sua senha"
+            name="password"
+          />
           <Link to="/">
             <MessageItLost>Esqueceu a senha?</MessageItLost>
           </Link>
