@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const Users = require("../models/Users");
 
 module.exports = class UsersController {
@@ -5,20 +6,30 @@ module.exports = class UsersController {
     const email = req.body.email;
     const name = req.body.name;
     const password = req.body.password;
+    const confirmPassword = req.body.confirmPassword;
 
-    const users = await Users.findAll({ raw: true });
-
-    users.forEach((user) => {
-      if (users.email === email) {
-        res.json({ message: "Email já Cadastrado!" });
-      }
+    if (password !== confirmPassword) {
+      res.json({ message: "As senhas não conferem!" });
       return;
+    }
+
+    const userEmail = await Users.findOne({
+      raw: true,
+      where: { email: email },
     });
+
+    if (userEmail !== null) {
+      res.json({ message: "Email já Cadastrado!" });
+      return;
+    }
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
 
     const user = {
       email,
       name,
-      password,
+      password: hash,
     };
 
     await Users.create(user);
@@ -36,8 +47,10 @@ module.exports = class UsersController {
       return;
     }
 
-    if (password !== user.password) {
-      res.json({ message: "A senha esta incorreta!" });
+    const passwordCript = bcrypt.compareSync(password, user.password);
+
+    if (passwordCript === false) {
+      res.json({ message: "Senha incorreta!" });
       return;
     }
 

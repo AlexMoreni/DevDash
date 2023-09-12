@@ -95,3 +95,25 @@ export const ContainerImg = styled.div`
 export const ImgBackground = styled.img`
   height: 100%;
 `;
+
+export const ErrorEmail = styled.p`
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+export const ErrorPassword = styled.p`
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+export const ErrorPasswordLogin = styled.p`
+  color: red;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 105%;
+`;

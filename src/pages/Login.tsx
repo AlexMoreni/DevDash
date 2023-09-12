@@ -19,6 +19,8 @@ import {
   TextEmphasis,
   ContainerImg,
   ImgBackground,
+  ErrorEmail,
+  ErrorPasswordLogin,
 } from "./LoginAndRegister.style";
 
 type Props = {
@@ -28,18 +30,26 @@ type Props = {
 
 const Login = ({ logged, setLogged }: Props) => {
   const navigate: any = useNavigate();
-  const [message, setMessage] = useState<string>("");
+  const [errorEmail, setErrorEmail] = useState<string>("");
+  const [errorPassword, setErrorPassword] = useState<string>("");
 
   const handleLogin = (e: any) => {
+    setErrorEmail("");
+    setErrorPassword("");
     e.preventDefault();
     axios
       .post("http://localhost:3000/users/login", {
-        email: "mirdella@email.com",
-        password: "senha123",
+        email: "alexmoreni@email.com",
+        password: "senha1223",
       })
       .then((response) => {
-        setMessage(response.data.message);
-        setLogged(true);
+        if (response.data.message === "Email não encontrado!") {
+          setErrorEmail(response.data.message);
+        } else if (response.data.message === "Senha incorreta!") {
+          setErrorPassword(response.data.message);
+        } else {
+          setLogged(true);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -63,6 +73,7 @@ const Login = ({ logged, setLogged }: Props) => {
         <MessageInput>
           E-mail
           <Input type="text" placeholder="Digite seu email" name="email" />
+          {errorEmail && <ErrorEmail>{errorEmail}</ErrorEmail>}
         </MessageInput>
         <MessageInput>
           Senha
@@ -74,6 +85,9 @@ const Login = ({ logged, setLogged }: Props) => {
           <Link to="/">
             <MessageItLost>Esqueceu a senha?</MessageItLost>
           </Link>
+          {errorPassword && (
+            <ErrorPasswordLogin>{errorPassword}</ErrorPasswordLogin>
+          )}
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
         <ButtonSubmit type="submit" value="Entrar" />

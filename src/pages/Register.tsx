@@ -18,22 +18,38 @@ import {
   TextEmphasis,
   ContainerImg,
   ImgBackground,
+  ErrorEmail,
+  ErrorPassword,
 } from "./LoginAndRegister.style";
 
 const Register = () => {
   const navigate: any = useNavigate();
-  const [message, setMessage] = useState<string>("");
+  const [register, setRegister] = useState<string>("");
+  const [errorEmail, setErrorEmail] = useState<string>("");
+  const [errorPassword, setErrorPassword] = useState<string>("");
 
   const registerForm = (e: any) => {
     e.preventDefault();
+    setErrorEmail("");
+    setErrorPassword("");
+
     axios
       .post("http://localhost:3000/users/register", {
-        email: "alexmoreni@email.com",
-        name: "Mirella",
+        email: "alexmoreni123@email.com",
+        name: "Alex",
         password: "senha123",
+        confirmPassword: "senha123",
       })
       .then(function (response) {
-        setMessage(response.data.message);
+        if (response.data.message === "Email já Cadastrado!") {
+          setErrorEmail(response.data.message);
+          return;
+        } else if (response.data.message === "As senhas não conferem!") {
+          setErrorPassword(response.data.message);
+          return;
+        } else {
+          setRegister(response.data.message);
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -41,7 +57,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (message === "Cadastrado") {
+    if (register === "Cadastrado") {
       navigate("/login");
     }
   });
@@ -56,6 +72,7 @@ const Register = () => {
         <MessageInput>
           E-mail
           <Input type="text" placeholder="Digite seu email" name="email" />
+          {errorEmail && <ErrorEmail>{errorEmail}</ErrorEmail>}
         </MessageInput>
         <MessageInput>
           Nome
@@ -68,6 +85,7 @@ const Register = () => {
             placeholder="Digite sua senha"
             name="password"
           />
+          {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
         <MessageInput>
@@ -75,8 +93,9 @@ const Register = () => {
           <Input
             type="password"
             placeholder="Confirme sua senha"
-            name="password2"
+            name="confirmPassword"
           />
+          {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
           <ImgEye src={Eye} alt="Mostrar senha" />
         </MessageInput>
         <ButtonSubmit type="submit" value="Cadastrar" />
