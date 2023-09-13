@@ -62,8 +62,9 @@ export const MessageItLost = styled.p`
 
 export const ImgEye = styled.img`
   position: absolute;
-  top: 35px;
+  top: 46px;
   right: 15px;
+  cursor: pointer;
 `;
 
 export const ButtonSubmit = styled.input`

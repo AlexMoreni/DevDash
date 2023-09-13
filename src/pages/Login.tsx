@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -34,6 +34,7 @@ const Login = ({ logged, setLogged }: Props) => {
   const [password, setPassword] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
   const [errorPassword, setErrorPassword] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleLogin = (e: any) => {
     setErrorEmail("");
@@ -96,7 +97,9 @@ const Login = ({ logged, setLogged }: Props) => {
             type="password"
             placeholder="Digite sua senha"
             name="password"
+            id="viewPassword"
             onChange={handleChange}
+            ref={inputRef}
           />
           <Link to="/">
             <MessageItLost>Esqueceu a senha?</MessageItLost>
@@ -104,7 +107,20 @@ const Login = ({ logged, setLogged }: Props) => {
           {errorPassword && (
             <ErrorPasswordLogin>{errorPassword}</ErrorPasswordLogin>
           )}
-          <ImgEye src={Eye} alt="Mostrar senha" />
+          <ImgEye
+            onClick={() => {
+              if (inputRef.current) {
+                const inputType = inputRef.current.type;
+                if (inputType === "password") {
+                  inputRef.current.type = "text";
+                } else {
+                  inputRef.current.type = "password";
+                }
+              }
+            }}
+            src={Eye}
+            alt="Mostrar senha"
+          />
         </MessageInput>
         <ButtonSubmit type="submit" value="Entrar" />
         <MessageCreateOrLog>

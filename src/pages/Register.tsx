@@ -1,4 +1,4 @@
-import { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useState, ChangeEvent, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -31,6 +31,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
   const [errorPassword, setErrorPassword] = useState<string>("");
+  const inputRefRegister = useRef<HTMLInputElement | null>(null);
+  const inputRefConfirm = useRef<HTMLInputElement | null>(null);
 
   const registerForm = (e: any) => {
     e.preventDefault();
@@ -111,9 +113,23 @@ const Register = () => {
             placeholder="Digite sua senha"
             name="password"
             onChange={handleChange}
+            ref={inputRefRegister}
           />
           {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
-          <ImgEye src={Eye} alt="Mostrar senha" />
+          <ImgEye
+            onClick={() => {
+              if (inputRefRegister.current) {
+                const inputType = inputRefRegister.current.type;
+                if (inputType === "password") {
+                  inputRefRegister.current.type = "text";
+                } else {
+                  inputRefRegister.current.type = "password";
+                }
+              }
+            }}
+            src={Eye}
+            alt="Mostrar senha"
+          />
         </MessageInput>
         <MessageInput>
           Confirme sua senha
@@ -122,9 +138,23 @@ const Register = () => {
             placeholder="Confirme sua senha"
             name="confirmPassword"
             onChange={handleChange}
+            ref={inputRefConfirm}
           />
           {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
-          <ImgEye src={Eye} alt="Mostrar senha" />
+          <ImgEye
+            onClick={() => {
+              if (inputRefConfirm.current) {
+                const inputType = inputRefConfirm.current.type;
+                if (inputType === "password") {
+                  inputRefConfirm.current.type = "text";
+                } else {
+                  inputRefConfirm.current.type = "password";
+                }
+              }
+            }}
+            src={Eye}
+            alt="Mostrar senha"
+          />
         </MessageInput>
         <ButtonSubmit type="submit" value="Cadastrar" />
         <MessageCreateOrLog>
