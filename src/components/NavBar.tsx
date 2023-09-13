@@ -35,7 +35,9 @@ const NavBar = ({ logged, photo, setLogged }: Props) => {
               Sair
             </LinksHeader>
             <LinksHeader>
-              <PhotoProfile src={photo} alt="Foto de perfil" />
+              <Link to="/edit">
+                <PhotoProfile src={photo} alt="Foto de perfil" />
+              </Link>
             </LinksHeader>
           </ContainerLinks>
         </ContainerHeader>
