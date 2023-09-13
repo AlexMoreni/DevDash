@@ -30,7 +30,7 @@ const Home = () => {
           <Button>Criar projeto</Button>
           <img src={ImgHome} alt="img-programmer" />
         </ContentHome>
-        <ContentHomeSide>
+        <ContentHomeSide id="project-home">
           <ContentColum>
             <Title>
               Seus projetos com <Emphasis>DevDash</Emphasis>
@@ -48,7 +48,7 @@ const Home = () => {
             <Button>Criar projeto</Button>
           </ContentColum>
         </ContentHomeSide>
-        <ContentHomeSide>
+        <ContentHomeSide id="annotations-home">
           <ContentColum>
             <Title>
               Suas anotações com <Emphasis>DevDash</Emphasis>

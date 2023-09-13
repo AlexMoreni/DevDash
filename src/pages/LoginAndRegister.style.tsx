@@ -114,6 +114,6 @@ export const ErrorPasswordLogin = styled.p`
   color: red;
   text-align: center;
   position: absolute;
-  top: 40%;
-  left: 105%;
+  bottom: -20px;
+  right: 0;
 `;

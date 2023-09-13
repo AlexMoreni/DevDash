@@ -41,10 +41,12 @@ const NavBar = ({ logged, setLogged }: Props) => {
             <Logo>DevDash</Logo>
           </Link>
           <ContainerLinks>
-            <Link to="#">
+            <a href="#project-home">
               <LinksHeader>Projetos</LinksHeader>
-            </Link>
-            <LinksHeader>Anotações</LinksHeader>
+            </a>
+            <a href="#annotations-home">
+              <LinksHeader>Anotações</LinksHeader>
+            </a>
             <Link to="/login">
               <LinksHeader>Login</LinksHeader>
             </Link>

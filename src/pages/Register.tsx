@@ -35,10 +35,10 @@ const Register = () => {
 
     axios
       .post("http://localhost:3000/users/register", {
-        email: "alexmoreni123@email.com",
-        name: "Alex",
-        password: "senha123",
-        confirmPassword: "senha123",
+        email: "mirella123@email.com",
+        name: "Mirella",
+        password: "123",
+        confirmPassword: "123",
       })
       .then(function (response) {
         if (response.data.message === "Email já Cadastrado!") {

@@ -39,8 +39,8 @@ const Login = ({ logged, setLogged }: Props) => {
     e.preventDefault();
     axios
       .post("http://localhost:3000/users/login", {
-        email: "alexmoreni123@email.com",
-        password: "senha123",
+        email: "mirella123@email.com",
+        password: "123",
       })
       .then((response) => {
         if (response.data.message === "Email não encontrado!") {

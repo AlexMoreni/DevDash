@@ -30,6 +30,7 @@ module.exports = class UsersController {
       email,
       name,
       password: hash,
+      imgProfile: "https://www.gov.br/cdn/sso-status-bar/src/image/user.png",
     };
 
     await Users.create(user);

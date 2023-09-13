@@ -14,6 +14,10 @@ const Users = db.define("Users", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  imgProfile: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 });
 
 module.exports = Users;
