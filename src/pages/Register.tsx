@@ -19,6 +19,7 @@ import {
   ContainerImg,
   ImgBackground,
   ErrorEmail,
+  ErrorName,
   ErrorPassword,
 } from "./LoginAndRegister.style";
 
@@ -30,6 +31,7 @@ const Register = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
+  const [errorName, setErrorName] = useState<string>("");
   const [errorPassword, setErrorPassword] = useState<string>("");
   const inputRefRegister = useRef<HTMLInputElement | null>(null);
   const inputRefConfirm = useRef<HTMLInputElement | null>(null);
@@ -38,6 +40,7 @@ const Register = () => {
     e.preventDefault();
     setErrorEmail("");
     setErrorPassword("");
+    setErrorName("");
 
     axios
       .post("http://localhost:3000/users/register", {
@@ -49,6 +52,25 @@ const Register = () => {
       .then(function (response) {
         if (response.data.message === "Email já Cadastrado!") {
           setErrorEmail(response.data.message);
+          return;
+        } else if (
+          response.data.message === "Email com caracteres insuficiente!"
+        ) {
+          setErrorEmail(response.data.message);
+          return;
+        } else if (
+          response.data.message === "Email com padrão invalido, inclua @"
+        ) {
+          setErrorEmail(response.data.message);
+          return;
+        } else if (response.data.message === "Insira apenas letras no nome!") {
+          setErrorName(response.data.message);
+          return;
+        } else if (response.data.message === "Nome com tamanho inválido!") {
+          setErrorName(response.data.message);
+          return;
+        } else if (response.data.message === "Mínimo 5 caracteres!") {
+          setErrorPassword(response.data.message);
           return;
         } else if (response.data.message === "As senhas não conferem!") {
           setErrorPassword(response.data.message);
@@ -90,8 +112,8 @@ const Register = () => {
         <MessageInput>
           E-mail
           <Input
-            type="email"
-            placeholder="Digite seu email"
+            type="text"
+            placeholder="Ex: name@example.com"
             name="email"
             onChange={handleChange}
           />
@@ -105,6 +127,7 @@ const Register = () => {
             name="name"
             onChange={handleChange}
           />
+          {errorName && <ErrorName>{errorName}</ErrorName>}
         </MessageInput>
         <MessageInput>
           Senha

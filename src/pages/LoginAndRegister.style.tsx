@@ -104,6 +104,13 @@ export const ErrorEmail = styled.p`
   right: 0;
 `;
 
+export const ErrorName = styled.p`
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
 export const ErrorPassword = styled.p`
   color: red;
   position: absolute;
