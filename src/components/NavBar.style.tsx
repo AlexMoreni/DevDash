@@ -22,6 +22,7 @@ export const Logo = styled.h1`
 export const ContainerLinks = styled.nav`
   font-family: var(--font-emphasis);
   display: flex;
+  align-items: center;
   gap: 40px;
 `;
 
@@ -32,4 +33,10 @@ export const LinksHeader = styled.a`
   &:hover {
     color: #a84bfe;
   }
+`;
+
+export const PhotoProfile = styled.img`
+  width: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
 `;

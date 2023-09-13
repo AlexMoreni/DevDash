@@ -25,10 +25,21 @@ import {
 
 type Props = {
   logged: boolean;
+  setEmailUser: React.Dispatch<React.SetStateAction<string>>;
+  setNameUser: React.Dispatch<React.SetStateAction<string>>;
+  setPasswordUser: React.Dispatch<React.SetStateAction<string>>;
+  setImgProfileUser: React.Dispatch<React.SetStateAction<string>>;
   setLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Login = ({ logged, setLogged }: Props) => {
+const Login = ({
+  logged,
+  setEmailUser,
+  setNameUser,
+  setPasswordUser,
+  setImgProfileUser,
+  setLogged,
+}: Props) => {
   const navigate: any = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -51,6 +62,11 @@ const Login = ({ logged, setLogged }: Props) => {
         } else if (response.data.message === "Senha incorreta!") {
           setErrorPassword(response.data.message);
         } else {
+          const user = response.data.user;
+          setEmailUser(user.email);
+          setNameUser(user.name);
+          setPasswordUser(user.password);
+          setImgProfileUser(user.imgProfile);
           setLogged(true);
         }
       })

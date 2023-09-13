@@ -14,15 +14,28 @@ import { useState } from "react";
 
 function App() {
   const [logged, setLogged] = useState<boolean>(false);
+  const [emailUser, setEmailUser] = useState<string>("");
+  const [nameUser, setNameUser] = useState<string>("");
+  const [passwordUser, setPasswordUser] = useState<string>("");
+  const [imgProfileUser, setImgProfileUser] = useState<string>("");
 
   return (
     <Router>
-      <NavBar logged={logged} setLogged={setLogged} />
+      <NavBar logged={logged} photo={imgProfileUser} setLogged={setLogged} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/login"
-          element={<Login logged={logged} setLogged={setLogged} />}
+          element={
+            <Login
+              logged={logged}
+              setEmailUser={setEmailUser}
+              setNameUser={setNameUser}
+              setPasswordUser={setPasswordUser}
+              setImgProfileUser={setImgProfileUser}
+              setLogged={setLogged}
+            />
+          }
         ></Route>
         <Route path="/register" element={<Register />}></Route>
       </Routes>

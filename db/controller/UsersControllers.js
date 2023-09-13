@@ -81,6 +81,6 @@ module.exports = class UsersController {
       return;
     }
 
-    res.json({ message: "Logado" });
+    res.json({ message: "Logado", user });
   }
 };

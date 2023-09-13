@@ -5,14 +5,16 @@ import {
   Logo,
   ContainerLinks,
   LinksHeader,
+  PhotoProfile,
 } from "./NavBar.style";
 
 type Props = {
   logged: boolean;
+  photo: string;
   setLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const NavBar = ({ logged, setLogged }: Props) => {
+const NavBar = ({ logged, photo, setLogged }: Props) => {
   return (
     <>
       {logged ? (
@@ -32,7 +34,9 @@ const NavBar = ({ logged, setLogged }: Props) => {
             >
               Sair
             </LinksHeader>
-            <LinksHeader>Foto</LinksHeader>
+            <LinksHeader>
+              <PhotoProfile src={photo} alt="Foto de perfil" />
+            </LinksHeader>
           </ContainerLinks>
         </ContainerHeader>
       ) : (
