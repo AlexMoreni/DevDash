@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -30,6 +30,8 @@ type Props = {
 
 const Login = ({ logged, setLogged }: Props) => {
   const navigate: any = useNavigate();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
   const [errorPassword, setErrorPassword] = useState<string>("");
 
@@ -39,8 +41,8 @@ const Login = ({ logged, setLogged }: Props) => {
     e.preventDefault();
     axios
       .post("http://localhost:3000/users/login", {
-        email: "mirella123@email.com",
-        password: "123",
+        email,
+        password,
       })
       .then((response) => {
         if (response.data.message === "Email não encontrado!") {
@@ -54,6 +56,14 @@ const Login = ({ logged, setLogged }: Props) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    }
   };
 
   useEffect(() => {
@@ -72,7 +82,12 @@ const Login = ({ logged, setLogged }: Props) => {
         </Message>
         <MessageInput>
           E-mail
-          <Input type="text" placeholder="Digite seu email" name="email" />
+          <Input
+            type="email"
+            placeholder="Digite seu email"
+            name="email"
+            onChange={handleChange}
+          />
           {errorEmail && <ErrorEmail>{errorEmail}</ErrorEmail>}
         </MessageInput>
         <MessageInput>
@@ -81,6 +96,7 @@ const Login = ({ logged, setLogged }: Props) => {
             type="password"
             placeholder="Digite sua senha"
             name="password"
+            onChange={handleChange}
           />
           <Link to="/">
             <MessageItLost>Esqueceu a senha?</MessageItLost>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -25,6 +25,10 @@ import {
 const Register = () => {
   const navigate: any = useNavigate();
   const [register, setRegister] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errorEmail, setErrorEmail] = useState<string>("");
   const [errorPassword, setErrorPassword] = useState<string>("");
 
@@ -35,10 +39,10 @@ const Register = () => {
 
     axios
       .post("http://localhost:3000/users/register", {
-        email: "mirella123@email.com",
-        name: "Mirella",
-        password: "123",
-        confirmPassword: "123",
+        email,
+        name,
+        password,
+        confirmPassword,
       })
       .then(function (response) {
         if (response.data.message === "Email já Cadastrado!") {
@@ -56,6 +60,18 @@ const Register = () => {
       });
   };
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+    } else if (e.target.name === "name") {
+      setName(e.target.value);
+    } else if (e.target.name === "password") {
+      setPassword(e.target.value);
+    } else if (e.target.name === "confirmPassword") {
+      setConfirmPassword(e.target.value);
+    }
+  };
+
   useEffect(() => {
     if (register === "Cadastrado") {
       navigate("/login");
@@ -71,12 +87,22 @@ const Register = () => {
         </Message>
         <MessageInput>
           E-mail
-          <Input type="text" placeholder="Digite seu email" name="email" />
+          <Input
+            type="email"
+            placeholder="Digite seu email"
+            name="email"
+            onChange={handleChange}
+          />
           {errorEmail && <ErrorEmail>{errorEmail}</ErrorEmail>}
         </MessageInput>
         <MessageInput>
           Nome
-          <Input type="text" placeholder="Digite seu nome" name="name" />
+          <Input
+            type="text"
+            placeholder="Digite seu nome"
+            name="name"
+            onChange={handleChange}
+          />
         </MessageInput>
         <MessageInput>
           Senha
@@ -84,6 +110,7 @@ const Register = () => {
             type="password"
             placeholder="Digite sua senha"
             name="password"
+            onChange={handleChange}
           />
           {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
           <ImgEye src={Eye} alt="Mostrar senha" />
@@ -94,6 +121,7 @@ const Register = () => {
             type="password"
             placeholder="Confirme sua senha"
             name="confirmPassword"
+            onChange={handleChange}
           />
           {errorPassword && <ErrorPassword>{errorPassword}</ErrorPassword>}
           <ImgEye src={Eye} alt="Mostrar senha" />
@@ -101,7 +129,7 @@ const Register = () => {
         <ButtonSubmit type="submit" value="Cadastrar" />
         <MessageCreateOrLog>
           Já tem uma conta?{" "}
-          <Link to="/register">
+          <Link to="/login">
             <TextEmphasis>Login</TextEmphasis>
           </Link>
         </MessageCreateOrLog>
