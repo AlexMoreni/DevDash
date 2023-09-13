@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      <NavBar logged={logged} setLogged={setLogged} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
