@@ -83,4 +83,62 @@ module.exports = class UsersController {
 
     res.json({ message: "Logado", user });
   }
+
+  static async editUser(req, res) {
+    const email = req.body.email;
+    const name = req.body.name;
+    const password = req.body.password;
+    const imgProfile = req.body.imgProfile;
+    const oldPassword = req.body.oldPassword;
+    const regex = /\d/;
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    if (regex.test(name)) {
+      res.json({ message: "Insira apenas letras no nome!" });
+      return;
+    }
+
+    if (name.length < 3) {
+      res.json({ message: "Nome com tamanho inválido!" });
+      return;
+    }
+
+    const checkPassword = await Users.findOne({
+      raw: true,
+      where: { email: email },
+    });
+
+    const passwordCript = bcrypt.compareSync(
+      oldPassword,
+      checkPassword.password
+    );
+
+    if (passwordCript === false) {
+      res.json({ message: "Senha incorreta!" });
+      return;
+    }
+
+    if (password === oldPassword) {
+      res.json({ message: "Está já é sua senha!" });
+      return;
+    }
+
+    if (password.length < 5) {
+      res.json({ message: "Mínimo 5 caracteres!" });
+      return;
+    }
+
+    const user = {
+      email,
+      name,
+      password: hash,
+      imgProfile,
+    };
+
+    await Users.update(user, { where: { email: email } });
+
+    res.json({ message: "Atualizado!" });
+  }
 };

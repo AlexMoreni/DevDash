@@ -27,16 +27,18 @@ const NavBar = ({ logged, photo, setLogged }: Props) => {
               <LinksHeader>Projetos</LinksHeader>
             </Link>
             <LinksHeader>Anotações</LinksHeader>
-            <LinksHeader
-              onClick={() => {
-                setLogged(false);
-              }}
-            >
-              Sair
-            </LinksHeader>
+            <Link to="/">
+              <LinksHeader
+                onClick={() => {
+                  setLogged(false);
+                }}
+              >
+                Sair
+              </LinksHeader>
+            </Link>
             <LinksHeader>
               <Link to="/edit">
-                <PhotoProfile src={photo} alt="Foto de perfil" />
+                <PhotoProfile src={photo} />
               </Link>
             </LinksHeader>
           </ContainerLinks>

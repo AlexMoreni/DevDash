@@ -37,6 +37,8 @@ export const LinksHeader = styled.a`
 
 export const PhotoProfile = styled.img`
   width: 50px;
+  height: 50px;
+  background-color: #fff;
   border: 2px solid #fff;
   border-radius: 50%;
 `;

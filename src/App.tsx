@@ -46,8 +46,11 @@ function App() {
             <Edit
               email={emailUser}
               name={nameUser}
+              setNameUser={setNameUser}
               password={passwordUser}
+              setPasswordUser={setPasswordUser}
               photoProfile={imgProfileUser}
+              setImgProfileUser={setImgProfileUser}
             />
           }
         ></Route>

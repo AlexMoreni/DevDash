@@ -21,8 +21,10 @@ export const ContainerInfoUser = styled.div`
 
 export const PhotoUser = styled.img`
   width: 150px;
+  height: 150px;
+  background-color: #fff;
   border-radius: 50%;
-  border-radius: 2px solid #a84bfe;
+  border: 2px solid #a84bfe;
 `;
 
 export const Name = styled.h1`
@@ -47,7 +49,7 @@ export const Button = styled.button`
   font-family: var(--font-emphasis), sans-serif;
   font-size: 1.6rem;
   background-color: var(--color-black);
-  padding: 10px;
+  padding: 10px 60px;
   margin-bottom: 30px;
   margin: 0 auto;
   cursor: pointer;
@@ -81,4 +83,18 @@ export const Input = styled.input`
   padding: 16px 12px;
   border: 1px solid var(#e2e8f0);
   border-radius: 4px;
+`;
+
+export const ErrorName = styled.p`
+  color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+export const ImgEye = styled.img`
+  position: absolute;
+  top: 39px;
+  right: 15px;
+  cursor: pointer;
 `;
