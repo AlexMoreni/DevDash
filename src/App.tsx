@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Edit from "./pages/Edit";
 import Notes from "./pages/Notes";
+import Projects from "./pages/Projects";
 import Page404 from "./pages/Page404";
 
 import "./App.css";
@@ -24,6 +25,8 @@ function App() {
   const [imgProfileUser, setImgProfileUser] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [titleProject, setTitleProject] = useState<string>("");
+  const [imgProject, setImgProject] = useState<string>("");
 
   return (
     <Router>
@@ -68,6 +71,18 @@ function App() {
               description={description}
               setTitle={setTitle}
               setDescription={setDescription}
+            />
+          }
+        ></Route>
+        <Route
+          path="/projects"
+          element={
+            <Projects
+              idUser={idUser}
+              titleProject={titleProject}
+              imgProject={imgProject}
+              setTitleProject={setTitleProject}
+              setImgProject={setImgProject}
             />
           }
         ></Route>

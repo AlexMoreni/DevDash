@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const Users = require("../models/Users");
 const Notes = require("../models/Notes");
+const Projects = require("../models/Projects");
 
 module.exports = class UsersController {
   static async registerUsers(req, res) {
@@ -187,5 +188,60 @@ module.exports = class UsersController {
     await Notes.destroy({ where: { id: id } });
 
     res.json({ message: "Nota apagada" });
+  }
+
+  static async newProject(req, res) {
+    const UserId = req.body.idUser;
+    const title = req.body.titleProject;
+    let imgProject = req.body.imgProject;
+
+    if (title.length < 3) {
+      res.json({ message: "Minimo 3 caracteres!" });
+      return;
+    }
+
+    if (title.length > 18) {
+      res.json({ message: "Máximo 18 caracteres!" });
+      return;
+    }
+
+    if (imgProject === "") {
+      imgProject =
+        "https://ql3bhlu3cm.map.azionedge.net/Custom/Content/Themes/Base/Images/sem-foto.gif ";
+    }
+
+    const project = {
+      UserId,
+      title,
+      imgProject,
+      done: false,
+    };
+
+    await Projects.create(project);
+    res.json({ message: "Projeto inserido com sucesso!" });
+  }
+
+  static async showProjects(req, res) {
+    const id = req.params.id;
+
+    const projects = await Projects.findAll({
+      raw: true,
+      where: { UserId: id },
+    });
+
+    if (projects.length === 0) {
+      res.json({ message: "Nenhum projeto encontrado!" });
+      return;
+    }
+
+    res.json({ message: "Projetos encontrados!", projects });
+  }
+
+  static async deleteProject(req, res) {
+    const id = req.body.id;
+
+    await Projects.destroy({ where: { id: id } });
+
+    res.json({ message: "Projeto apagado" });
   }
 };

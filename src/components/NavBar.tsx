@@ -23,7 +23,7 @@ const NavBar = ({ logged, photo, setLogged }: Props) => {
             <Logo>DevDash</Logo>
           </Link>
           <ContainerLinks>
-            <Link to="#">
+            <Link to="/projects">
               <LinksHeader>Projetos</LinksHeader>
             </Link>
             <Link to="/notes">
