@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Edit from "./pages/Edit";
+import Notes from "./pages/Notes";
 import Page404 from "./pages/Page404";
 
 import "./App.css";
@@ -16,10 +17,13 @@ import { useState } from "react";
 
 function App() {
   const [logged, setLogged] = useState<boolean>(false);
+  const [idUser, setIdUser] = useState<number>(0);
   const [emailUser, setEmailUser] = useState<string>("");
   const [nameUser, setNameUser] = useState<string>("");
   const [passwordUser, setPasswordUser] = useState<string>("");
   const [imgProfileUser, setImgProfileUser] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
 
   return (
     <Router>
@@ -31,6 +35,7 @@ function App() {
           element={
             <Login
               logged={logged}
+              setIdUser={setIdUser}
               setEmailUser={setEmailUser}
               setNameUser={setNameUser}
               setPasswordUser={setPasswordUser}
@@ -51,6 +56,18 @@ function App() {
               setPasswordUser={setPasswordUser}
               photoProfile={imgProfileUser}
               setImgProfileUser={setImgProfileUser}
+            />
+          }
+        ></Route>
+        <Route
+          path="/notes"
+          element={
+            <Notes
+              idUser={idUser}
+              title={title}
+              description={description}
+              setTitle={setTitle}
+              setDescription={setDescription}
             />
           }
         ></Route>

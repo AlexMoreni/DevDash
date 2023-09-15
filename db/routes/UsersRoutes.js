@@ -6,5 +6,8 @@ const UsersController = require("../controller/UsersControllers");
 router.post("/register", UsersController.registerUsers);
 router.post("/login", UsersController.loginUser);
 router.post("/edit", UsersController.editUser);
+router.post("/newnote", UsersController.newNote);
+router.get("/notes/:id", UsersController.showNotes);
+router.post("/deletenote", UsersController.deleteNote);
 
 module.exports = router;

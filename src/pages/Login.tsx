@@ -25,6 +25,7 @@ import {
 
 type Props = {
   logged: boolean;
+  setIdUser: React.Dispatch<React.SetStateAction<number>>;
   setEmailUser: React.Dispatch<React.SetStateAction<string>>;
   setNameUser: React.Dispatch<React.SetStateAction<string>>;
   setPasswordUser: React.Dispatch<React.SetStateAction<string>>;
@@ -34,6 +35,7 @@ type Props = {
 
 const Login = ({
   logged,
+  setIdUser,
   setEmailUser,
   setNameUser,
   setPasswordUser,
@@ -63,6 +65,7 @@ const Login = ({
           setErrorPassword(response.data.message);
         } else {
           const user = response.data.user;
+          setIdUser(user.id);
           setEmailUser(user.email);
           setNameUser(user.name);
           setPasswordUser(user.password);

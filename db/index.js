@@ -4,6 +4,7 @@ const db = require("./conn");
 
 const app = express();
 const Users = require("./models/Users");
+const Notes = require("./models/Notes");
 
 const UsersRoutes = require("./routes/UsersRoutes");
 

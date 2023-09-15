@@ -26,7 +26,9 @@ const NavBar = ({ logged, photo, setLogged }: Props) => {
             <Link to="#">
               <LinksHeader>Projetos</LinksHeader>
             </Link>
-            <LinksHeader>Anotações</LinksHeader>
+            <Link to="/notes">
+              <LinksHeader>Anotações</LinksHeader>
+            </Link>
             <Link to="/">
               <LinksHeader
                 onClick={() => {

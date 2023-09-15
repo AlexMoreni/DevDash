@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const Users = require("../models/Users");
+const Notes = require("../models/Notes");
 
 module.exports = class UsersController {
   static async registerUsers(req, res) {
@@ -140,5 +141,51 @@ module.exports = class UsersController {
     await Users.update(user, { where: { email: email } });
 
     res.json({ message: "Atualizado!" });
+  }
+
+  static async newNote(req, res) {
+    const UserId = req.body.idUser;
+    const title = req.body.title;
+    const description = req.body.description;
+
+    const note = {
+      UserId,
+      title,
+      description,
+    };
+
+    if (title.length < 3) {
+      res.json({ message: "Minimo 3 caracteres!" });
+      return;
+    }
+
+    if (description.length < 3) {
+      res.json({ message: "Caracteres insuficientes!" });
+      return;
+    }
+
+    await Notes.create(note);
+    res.json({ message: "Nota inserida com sucesso!" });
+  }
+
+  static async showNotes(req, res) {
+    const id = req.params.id;
+
+    const notes = await Notes.findAll({ raw: true, where: { UserId: id } });
+
+    if (notes.length === 0) {
+      res.json({ message: "Nenhuma nota encontrada!", notes });
+      return;
+    }
+
+    res.json({ message: "Nota inserida com sucesso!", notes });
+  }
+
+  static async deleteNote(req, res) {
+    const id = req.body.id;
+
+    await Notes.destroy({ where: { id: id } });
+
+    res.json({ message: "Nota apagada" });
   }
 };
