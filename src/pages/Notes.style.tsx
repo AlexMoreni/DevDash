@@ -5,17 +5,46 @@ export const Container = styled.section`
   min-height: 90vh;
   padding: calc(15vh + 20px) 60px 0 60px;
   background-color: var(--background);
+
+  @media (max-width: 480px) {
+    padding-top: calc(15vh + 20px);
+    padding-left: 30px;
+  }
 `;
 
 export const ContainerInfo = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 100px;
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    flex-direction: column;
+  }
 `;
 
 export const NewNoteBtn = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    justify-content: center;
+  }
 `;
 
 export const Title = styled.h1`
@@ -24,6 +53,12 @@ export const Title = styled.h1`
   font-size: 4rem;
   line-height: 90px;
   margin-right: 20px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    font-size: 2.7rem;
+    text-align: center;
+  }
 `;
 
 export const TextEmphasis = styled.span`
@@ -51,6 +86,10 @@ export const FormNote = styled.form`
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    align-items: center;
+  }
 `;
 
 export const MessageInput = styled.label`
@@ -112,6 +151,19 @@ export const WarningNote = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 480px) {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    text-align: center;
+  }
 `;
 
 export const ContainerNotes = styled.div`
@@ -121,6 +173,14 @@ export const ContainerNotes = styled.div`
   gap: 25px;
   flex-wrap: wrap;
   padding-bottom: 100px;
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    justify-content: center;
+  }
 `;
 
 export const CardNote = styled.div`

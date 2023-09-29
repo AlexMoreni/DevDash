@@ -2,13 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.section`
   width: 100vw;
-  height: 90vh;
+  min-height: 90vh;
   background-image: url("../public/background-404.png");
   background-size: cover;
   padding: 15vh 60px 0 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 480px) {
+    padding-top: 20vh;
+    flex-direction: column;
+  }
 `;
 
 export const Title = styled.h1`
@@ -17,6 +22,11 @@ export const Title = styled.h1`
   color: var(--color-text-white);
   font-size: 4rem;
   line-height: 120%;
+
+  @media (max-width: 480px) {
+    font-size: 3rem;
+    text-align: center;
+  }
 `;
 
 export const Text = styled.p`
@@ -25,6 +35,10 @@ export const Text = styled.p`
   font-size: 2rem;
   color: var(--color-gray-text);
   margin: 25px 0 55px 0;
+
+  @media (max-width: 480px) {
+    text-align: center;
+  }
 `;
 
 export const ButtonHome = styled.button`
@@ -36,4 +50,15 @@ export const ButtonHome = styled.button`
   border-radius: 999px;
   text-transform: uppercase;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    margin-left: 60px;
+    margin-bottom: 30px;
+  }
+`;
+
+export const Img = styled.img`
+  @media (max-width: 480px) {
+    max-width: 90%;
+  }
 `;

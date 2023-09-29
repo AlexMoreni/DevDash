@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Img404 from "../../public/img-404.png";
 
-import { Container, Title, Text, ButtonHome } from "./Page404.style";
+import { Container, Title, Text, ButtonHome, Img } from "./Page404.style";
 
 const Page404 = () => {
   return (
@@ -18,7 +18,7 @@ const Page404 = () => {
         </Link>
       </div>
       <div>
-        <img src={Img404} alt="Imagem 404" />
+        <Img src={Img404} alt="Imagem 404" />
       </div>
     </Container>
   );

@@ -5,12 +5,32 @@ export const Container = styled.section`
   min-height: 90vh;
   padding: calc(15vh + 20px) 60px 0 60px;
   background-color: var(--background);
+
+  @media (max-width: 480px) {
+    padding-top: calc(15vh + 20px);
+    padding-left: 30px;
+  }
 `;
 
 export const ContainerInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding-left: 20px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const ContainerInfoUser = styled.div`
@@ -57,6 +77,14 @@ export const Button = styled.button`
   &:hover {
     color: var(--color-purple);
   }
+
+  @media (max-width: 480px) {
+    margin-bottom: 15px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin-bottom: 15px;
+  }
 `;
 
 export const Form = styled.form`
@@ -64,6 +92,28 @@ export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+
+  @media (max-width: 480px) {
+    padding-top: 30px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 30px;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    padding-top: 60px;
+    justify-content: center;
+    align-items: center;
+    display: block;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    justify-content: center;
+    align-items: center;
+    display: block;
+  }
 `;
 
 export const MessageInput = styled.label`
@@ -74,6 +124,14 @@ export const MessageInput = styled.label`
   font-weight: 600;
   display: block;
   position: relative;
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    padding-bottom: 20px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    padding-bottom: 20px;
+  }
 `;
 
 export const Input = styled.input`

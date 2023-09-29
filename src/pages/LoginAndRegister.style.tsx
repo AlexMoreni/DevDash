@@ -6,12 +6,45 @@ export const Container = styled.section`
   background-color: var(--background);
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 480px) {
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    overflow-x: hidden;
+  }
 `;
 
 export const FormLogin = styled.form`
   padding-top: calc(15vh + 20px);
   max-width: 50%;
   padding-left: 65px;
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+    padding-left: 25px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding-top: calc(15vh + 20px);
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding-top: calc(15vh + 20px);
+  }
 `;
 
 export const Title = styled.h2`
@@ -20,6 +53,14 @@ export const Title = styled.h2`
   font-size: 3.6rem;
   font-weight: 700;
   margin-bottom: 16px;
+
+  @media (max-width: 480px) {
+    text-align: center;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    text-align: center;
+  }
 `;
 
 export const Message = styled.p`
@@ -28,6 +69,19 @@ export const Message = styled.p`
   font-family: var(--font-emphasis);
   font-size: 1.6rem;
   margin-bottom: 40px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    text-align: center;
+  }
 `;
 
 export const MessageInput = styled.label`
@@ -49,6 +103,10 @@ export const Input = styled.input`
   border-radius: 4px;
   display: block;
   margin: 8px 0px 10px 0px;
+
+  @media (max-width: 480px) {
+    max-width: 90%;
+  }
 `;
 
 export const MessageItLost = styled.p`
@@ -58,6 +116,10 @@ export const MessageItLost = styled.p`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media (max-width: 480px) {
+    right: 40px;
+  }
 `;
 
 export const ImgEye = styled.img`
@@ -65,6 +127,10 @@ export const ImgEye = styled.img`
   top: 46px;
   right: 15px;
   cursor: pointer;
+
+  @media (max-width: 480px) {
+    right: 50px;
+  }
 `;
 
 export const ButtonSubmit = styled.input`
@@ -75,6 +141,12 @@ export const ButtonSubmit = styled.input`
   border-radius: 4px;
   cursor: pointer;
   margin: 32px 0;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    margin-top: 32px;
+    margin-left: 10px;
+  }
 `;
 
 export const MessageCreateOrLog = styled.p`
@@ -82,6 +154,10 @@ export const MessageCreateOrLog = styled.p`
   color: var(--color-gray-text);
   font-family: var(--font-emphasis);
   font-size: 1.6rem;
+
+  @media (max-width: 480px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const TextEmphasis = styled.span`
@@ -91,6 +167,23 @@ export const TextEmphasis = styled.span`
 export const ContainerImg = styled.div`
   max-width: 100%;
   height: 90vh;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    display: none;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    display: none;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    overflow: hidden;
+    height: 110vh;
+  }
 `;
 
 export const ImgBackground = styled.img`
@@ -102,6 +195,10 @@ export const ErrorEmail = styled.p`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media (max-width: 480px) {
+    right: 40px;
+  }
 `;
 
 export const ErrorName = styled.p`
@@ -109,6 +206,10 @@ export const ErrorName = styled.p`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media (max-width: 480px) {
+    right: 40px;
+  }
 `;
 
 export const ErrorPassword = styled.p`
@@ -116,6 +217,10 @@ export const ErrorPassword = styled.p`
   position: absolute;
   top: 0;
   right: 0;
+
+  @media (max-width: 480px) {
+    right: 40px;
+  }
 `;
 
 export const ErrorPasswordLogin = styled.p`
@@ -124,4 +229,8 @@ export const ErrorPasswordLogin = styled.p`
   position: absolute;
   bottom: -20px;
   right: 0;
+
+  @media (max-width: 480px) {
+    right: 40px;
+  }
 `;

@@ -5,6 +5,10 @@ export const Container = styled.section`
   min-height: 90vh;
   padding-top: calc(15vh + 20px);
   background-color: var(--background);
+
+  @media (max-width: 480px) {
+    overflow-x: hidden;
+  }
 `;
 
 export const ContentHome = styled.div`
@@ -22,6 +26,23 @@ export const Title = styled.h1`
   font-size: 4rem;
   line-height: 90px;
   margin-bottom: 20px;
+
+  @media (max-width: 480px) {
+    text-align: center;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    text-align: center;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    text-align: center;
+  }
 `;
 
 export const Emphasis = styled.span`
@@ -37,6 +58,22 @@ export const Text = styled.p`
   font-size: 2rem;
   text-align: center;
   margin-bottom: 25px;
+
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0 10px;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    padding: 0 10px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Button = styled.button`
@@ -58,6 +95,20 @@ export const ContentHomeSide = styled.section`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding-top: 10px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding-top: 60px;
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    padding-top: 60px;
+  }
 `;
 
 export const ContentColum = styled.div`

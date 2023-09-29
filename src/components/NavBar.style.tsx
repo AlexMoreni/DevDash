@@ -10,6 +10,14 @@ export const ContainerHeader = styled.header`
   align-items: center;
   position: fixed;
   z-index: 99;
+
+  @media (max-width: 480px) {
+    padding: 0 10px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    padding: 0 30px;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -17,6 +25,10 @@ export const Logo = styled.h1`
   color: var(--color-purple);
   font-size: 4rem;
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    font-size: 2.8rem;
+  }
 `;
 
 export const ContainerLinks = styled.nav`
@@ -24,6 +36,14 @@ export const ContainerLinks = styled.nav`
   display: flex;
   align-items: center;
   gap: 40px;
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    gap: 15px;
+  }
 `;
 
 export const LinksHeader = styled.a`
@@ -33,6 +53,10 @@ export const LinksHeader = styled.a`
   &:hover {
     color: #a84bfe;
   }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const PhotoProfile = styled.img`
@@ -41,4 +65,9 @@ export const PhotoProfile = styled.img`
   background-color: #fff;
   border: 2px solid #fff;
   border-radius: 50%;
+
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
